@@ -37,8 +37,24 @@ export class AppComponent {
       e.preventDefault();
       // Stash the event so it can be triggered later.
       this.deferredPrompt = e;
+      var a2hsBtn = document.querySelector(".ad2hs-prompt");
     
-      this.showAddToHomeScreen();
+      a2hsBtn.addEventListener("click", addToHomeScreen);
+     function  addToHomeScreen() {  var a2hsBtn = document.querySelector(".ad2hs-prompt");  // hide our user interface that shows our A2HS button
+      // Show the prompt
+      this.defferedPrompt.prompt();  // Wait for the user to respond to the prompt
+      this.defferedPrompt.userChoice
+        .then(function(choiceResult){
+    
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the A2HS prompt');
+      } else {
+        console.log('User dismissed the A2HS prompt');
+      }
+    
+      this.defferedPrompt = null;
+    
+    });}
     
     });
 
@@ -67,26 +83,4 @@ export class AppComponent {
     //   });
     // });
   }
-  showAddToHomeScreen =() => {
-
-    var a2hsBtn = document.querySelector(".ad2hs-prompt");
-    
-    a2hsBtn.addEventListener("click", this.addToHomeScreen);
-  
-  }
-  addToHomeScreen() {  var a2hsBtn = document.querySelector(".ad2hs-prompt");  // hide our user interface that shows our A2HS button
-  // Show the prompt
-  this.defferedPrompt.prompt();  // Wait for the user to respond to the prompt
-  this.defferedPrompt.userChoice
-    .then(function(choiceResult){
-
-  if (choiceResult.outcome === 'accepted') {
-    console.log('User accepted the A2HS prompt');
-  } else {
-    console.log('User dismissed the A2HS prompt');
-  }
-
-  this.defferedPrompt = null;
-
-});}
 }
