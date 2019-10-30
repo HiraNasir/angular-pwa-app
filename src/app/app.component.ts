@@ -30,29 +30,30 @@ export class AppComponent {
         })
         .catch(console.error)
     }
-
     window.addEventListener('beforeinstallprompt', function(event) {
       console.log('beforeinstallprompt fired');
       event.preventDefault();
       this.defferedPrompt = event;
       return false;
     });
-
-
   }
-  //  addToHomeScreen() {
-  //   this.defferedPrompt.prompt();  // Wait for the user to respond to the prompt
-  //   this.defferedPrompt.userChoice
-  //     .then(function (choiceResult) {
-
-  //       if (choiceResult.outcome === 'accepted') {
-  //         console.log('User accepted the A2HS prompt');
-  //       } else {
-  //         console.log('User dismissed the A2HS prompt');
-  //       }
-
-  //       this.defferedPrompt = null;
-
-  //     });
-  // }
+  
+   addToHomeScreen() {
+     console.log('hi');
+    if (this.defferedPrompt) {
+      this.defferedPrompt.prompt();
+  
+      this.defferedPrompt.userChoice.then(function(choiceResult) {
+        console.log(choiceResult.outcome);
+  
+        if (choiceResult.outcome === 'dismissed') {
+          console.log('User cancelled installation');
+        } else {
+          console.log('User added to home screen');
+        }
+      });
+  
+      this.defferedPrompt = null;
+    }
+  }
 }
