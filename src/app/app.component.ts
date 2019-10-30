@@ -38,46 +38,23 @@ export class AppComponent {
       // Stash the event so it can be triggered later.
       this.deferredPrompt = e;
       return false;
-
-      function addToHomeScreen() {
-        this.defferedPrompt.prompt();  // Wait for the user to respond to the prompt
-        this.defferedPrompt.userChoice
-          .then(function (choiceResult) {
-
-            if (choiceResult.outcome === 'accepted') {
-              console.log('User accepted the A2HS prompt');
-            } else {
-              console.log('User dismissed the A2HS prompt');
-            }
-
-            this.defferedPrompt = null;
-
-          });
-      }
     });
 
-    // window.addEventListener('beforeinstallprompt', (e) => {
-    //   // Prevent Chrome 67 and earlier from automatically showing the prompt
-    //   e.preventDefault();
-    //   // Stash the event so it can be triggered later.
-    //   this.defferedPrompt = e;
-    //   // Update UI to notify the user they can add to home screen
 
+  }
+   addToHomeScreen() {
+    this.defferedPrompt.prompt();  // Wait for the user to respond to the prompt
+    this.defferedPrompt.userChoice
+      .then(function (choiceResult) {
 
-    //   this.addBtn.addEventListener('click', (e) => {
-    //     // hide our user interface that shows our A2HS button
-    //     // Show the prompt
-    //     this.defferedPrompt.prompt();
-    //     // Wait for the user to respond to the prompt
-    //     this.defferedPrompt.userChoice.then((choiceResult) => {
-    //       if (choiceResult.outcome === 'accepted') {
-    //         console.log('User accepted the A2HS prompt');
-    //       } else {
-    //         console.log('User dismissed the A2HS prompt');
-    //       }
-    //       this.defferedPrompt = null;
-    //     });
-    //   });
-    // });
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the A2HS prompt');
+        } else {
+          console.log('User dismissed the A2HS prompt');
+        }
+
+        this.defferedPrompt = null;
+
+      });
   }
 }
