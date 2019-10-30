@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
 import { SwPush } from '@angular/service-worker';
 import { PushNotificationService } from './push-notification.service';
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -33,17 +35,18 @@ export class AppComponent {
 
     window.addEventListener('beforeinstallprompt', function(event) {
       console.log('beforeinstallprompt fired');
-      //event.preventDefault();
       this.defferedPrompt = event;
-      console.log(this.defferedPrompt);
-      return true;
+      event.preventDefault();
+      this.addToHomeScreen();
     });
 
 
   }
   
    addToHomeScreen() {
-     console.log('hi');
+     console.log('hi inside function');
+     console.log(this.defferedPrompt);
+     
     if (this.defferedPrompt) {
       this.defferedPrompt.prompt();
       console.log(this.defferedPrompt);
