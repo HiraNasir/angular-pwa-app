@@ -33,11 +33,10 @@ export class AppComponent {
         .catch(console.error)
     }
 
-    window.addEventListener('beforeinstallprompt', function(event) {
+    window.addEventListener('beforeinstallprompt', (event) => {
       console.log('beforeinstallprompt fired');
       this.defferedPrompt = event;
       event.preventDefault();
-      this.addToHomeScreen();
     });
 
 
