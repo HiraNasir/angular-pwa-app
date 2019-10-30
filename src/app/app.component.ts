@@ -42,6 +42,7 @@ export class AppComponent {
   enableApp() {
     console.log ('hi');
     if (this.defferedPrompt) {
+      debugger;
       this.defferedPrompt.prompt();
 
       this.defferedPrompt.userChoice.then(function (choiceResult) {
