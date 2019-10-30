@@ -34,6 +34,7 @@ export class AppComponent {
       console.log('beforeinstallprompt fired');
       event.preventDefault();
       this.defferedPrompt = event;
+      console.log(this.defferedPrompt);
       return false;
     });
   }
@@ -42,6 +43,7 @@ export class AppComponent {
      console.log('hi');
     if (this.defferedPrompt) {
       this.defferedPrompt.prompt();
+      console.log(this.defferedPrompt);
   
       this.defferedPrompt.userChoice.then(function(choiceResult) {
         console.log(choiceResult.outcome);
