@@ -31,31 +31,12 @@ export class AppComponent {
         .catch(console.error)
     }
 
+    let deferredPrompt;
 
-    window.addEventListener('beforeinstallprompt', function (event) {
-      console.log('beforeinstallprompt is fired')
-      event.preventDefault();
-      this.defferedPrompt = event;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Stash the event so it can be triggered later.
+      deferredPrompt = e;
       return false;
     });
-  }
-  enableApp() {
-    console.log ('hi');
-    if (this.defferedPrompt) {
-      debugger;
-      this.defferedPrompt.prompt();
-
-      this.defferedPrompt.userChoice.then(function (choiceResult) {
-        console.log(choiceResult.outcome);
-
-        if (choiceResult.outcome === 'dismissed') {
-          console.log('User cancelled installation');
-        } else {
-          console.log('User added to home screen');
-        }
-      });
-
-      this.defferedPrompt = null;
-    }
   }
 }
