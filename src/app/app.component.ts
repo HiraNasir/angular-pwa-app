@@ -31,12 +31,28 @@ export class AppComponent {
         .catch(console.error)
     }
 
-    let deferredPrompt;
 
-    window.addEventListener('beforeinstallprompt', (e) => {
-      // Stash the event so it can be triggered later.
-      deferredPrompt = e;
+    window.addEventListener('beforeinstallprompt', function (event) {
+      console.log('beforeinstallprompt is fired')
+      event.preventDefault();
+      this.defferedPrompt = event;
       return false;
     });
+    // document.getElementById('btnAdd').addEventListener('click', (e) => {
+    //   // hide our user interface that shows our A2HS button
+
+    //   // Show the prompt
+    //   this.defferedPrompt.prompt();
+    //   // Wait for the user to respond to the prompt
+    //   this.defferedPrompt.userChoice
+    //     .then((choiceResult) => {
+    //       if (choiceResult.outcome === 'accepted') {
+    //         console.log('User accepted the A2HS prompt');
+    //       } else {
+    //         console.log('User dismissed the A2HS prompt');
+    //       }
+    //       this.defferedPrompt = null;
+    //     });
+    // });
   }
 }
