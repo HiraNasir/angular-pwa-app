@@ -1,6 +1,6 @@
-const VERSION = 'v1';
+// const VERSION = 'v1';
 
-function log (messages){
-    console.log(VERSION, messages)
-}
-log('installing service worker');
+// function log (messages){
+//     console.log(VERSION, messages)
+// }
+// log('installing service worker');
