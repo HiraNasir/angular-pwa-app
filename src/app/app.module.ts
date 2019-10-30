@@ -11,12 +11,13 @@ import { HttpClientModule } from '@angular/common/http'
 import { environment } from '../environments/environment';
 
 @NgModule({
-  declarations: [
+  declarations: [ 
     AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [PushNotificationService],
