@@ -352,9 +352,8 @@ let AppComponent = class AppComponent {
             return false;
         });
     }
-    ngOnInit() {
-    }
     enableApp() {
+        console.log('hi');
         if (this.defferedPrompt) {
             this.defferedPrompt.prompt();
             this.defferedPrompt.userChoice.then(function (choiceResult) {

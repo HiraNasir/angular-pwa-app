@@ -407,9 +407,8 @@
                         return false;
                     });
                 }
-                AppComponent.prototype.ngOnInit = function () {
-                };
                 AppComponent.prototype.enableApp = function () {
+                    console.log('hi');
                     if (this.defferedPrompt) {
                         this.defferedPrompt.prompt();
                         this.defferedPrompt.userChoice.then(function (choiceResult) {

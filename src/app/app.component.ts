@@ -7,7 +7,7 @@ import { PushNotificationService } from './push-notification.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
   update: boolean = false;
   defferedPrompt: any;
@@ -37,13 +37,10 @@ export class AppComponent implements OnInit {
       event.preventDefault();
       this.defferedPrompt = event;
       return false;
-    })
+    });
   }
-
-  ngOnInit() {
-
-  }
-  enableApp(e) {
+  enableApp() {
+    console.log ('hi');
     if (this.defferedPrompt) {
       this.defferedPrompt.prompt();
 
