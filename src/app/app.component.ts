@@ -31,12 +31,10 @@ export class AppComponent {
         .catch(console.error)
     }
 
-
-    window.addEventListener('beforeinstallprompt', function (e) {
-      // Prevent Chrome 67 and earlier from automatically showing the prompt
-      e.preventDefault();
-      // Stash the event so it can be triggered later.
-      this.deferredPrompt = e;
+    window.addEventListener('beforeinstallprompt', function(event) {
+      console.log('beforeinstallprompt fired');
+      event.preventDefault();
+      this.defferedPrompt = event;
       return false;
     });
 
