@@ -33,7 +33,7 @@ export class AppComponent {
 
     window.addEventListener('beforeinstallprompt', function(event) {
       console.log('beforeinstallprompt fired');
-      event.preventDefault();
+      //event.preventDefault();
       this.defferedPrompt = event;
       console.log(this.defferedPrompt);
       return true;
