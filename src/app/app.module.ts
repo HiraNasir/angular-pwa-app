@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker'
 import { PushNotificationService } from './push-notification.service';
-import { HttpClientModule } from '@angular/common/http'
 
 
 import { environment } from '../environments/environment';

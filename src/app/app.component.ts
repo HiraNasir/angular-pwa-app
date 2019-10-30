@@ -10,9 +10,9 @@ import { PushNotificationService } from './push-notification.service';
 export class AppComponent {
 
   update: boolean = false;
-  defferedPrompt:any;
+  defferedPrompt: any;
 
-   VAPID_PUBLIC = "BNCXKhTTGNah_ZjSesYKw08qbM2GfAHB_sJUw2PLs0X4QhkMRA-ngrfqgPGPa70OluaXNCLLM7QeTorT2wkqebw";
+  VAPID_PUBLIC = "BNCXKhTTGNah_ZjSesYKw08qbM2GfAHB_sJUw2PLs0X4QhkMRA-ngrfqgPGPa70OluaXNCLLM7QeTorT2wkqebw";
   constructor(update: SwUpdate, swPush: SwPush, pushService: PushNotificationService) {
 
     update.available.subscribe(event => {
@@ -32,12 +32,12 @@ export class AppComponent {
     }
 
 
-    window.addEventListener('beforeinstallprompt', function(event) {
+    window.addEventListener('beforeinstallprompt', function (event) {
       console.log('beforeinstallprompt is fired')
       event.preventDefault();
       this.defferedPrompt = event;
       return false;
-  }) 
+    })
   }
 
 
