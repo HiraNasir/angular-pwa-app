@@ -30,13 +30,16 @@ export class AppComponent {
         })
         .catch(console.error)
     }
+
     window.addEventListener('beforeinstallprompt', function(event) {
       console.log('beforeinstallprompt fired');
       event.preventDefault();
       this.defferedPrompt = event;
       console.log(this.defferedPrompt);
-      return false;
+      return true;
     });
+
+
   }
   
    addToHomeScreen() {
