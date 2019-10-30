@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
 import { SwPush } from '@angular/service-worker';
 import { PushNotificationService } from './push-notification.service';
@@ -7,7 +7,7 @@ import { PushNotificationService } from './push-notification.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   update: boolean = false;
   defferedPrompt: any;
@@ -40,5 +40,24 @@ export class AppComponent {
     })
   }
 
+  ngOnInit() {
 
+  }
+  enableApp(e) {
+    if (this.defferedPrompt) {
+      this.defferedPrompt.prompt();
+
+      this.defferedPrompt.userChoice.then(function (choiceResult) {
+        console.log(choiceResult.outcome);
+
+        if (choiceResult.outcome === 'dismissed') {
+          console.log('User cancelled installation');
+        } else {
+          console.log('User added to home screen');
+        }
+      });
+
+      this.defferedPrompt = null;
+    }
+  }
 }

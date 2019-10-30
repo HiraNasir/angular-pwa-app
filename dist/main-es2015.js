@@ -32,7 +32,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n<!-- Toolbar -->\n<div class=\"toolbar\" role=\"banner\">\n  <img width=\"40\" alt=\"Angular Logo\"\n    src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==\" />\n  <span>Welcome</span>\n  <div class=\"spacer\"></div>\n  <button>Enable App</button>\n\n</div>\n<router-outlet></router-outlet>");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<!-- Toolbar -->\n<div class=\"toolbar\" role=\"banner\">\n  <img width=\"40\" alt=\"Angular Logo\"\n    src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==\" />\n  <span>Welcome</span>\n  <div class=\"spacer\"></div>\n  <button (click)=\"enableApp()\">Enable App</button>\n\n</div>\n<router-outlet></router-outlet>");
 
 /***/ }),
 
@@ -351,6 +351,23 @@ let AppComponent = class AppComponent {
             this.defferedPrompt = event;
             return false;
         });
+    }
+    ngOnInit() {
+    }
+    enableApp() {
+        if (this.defferedPrompt) {
+            this.defferedPrompt.prompt();
+            this.defferedPrompt.userChoice.then(function (choiceResult) {
+                console.log(choiceResult.outcome);
+                if (choiceResult.outcome === 'dismissed') {
+                    console.log('User cancelled installation');
+                }
+                else {
+                    console.log('User added to home screen');
+                }
+            });
+            this.defferedPrompt = null;
+        }
     }
 };
 AppComponent.ctorParameters = () => [
