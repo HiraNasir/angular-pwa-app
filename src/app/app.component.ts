@@ -42,19 +42,19 @@ export class AppComponent {
 
 
   }
-   addToHomeScreen() {
-    this.defferedPrompt.prompt();  // Wait for the user to respond to the prompt
-    this.defferedPrompt.userChoice
-      .then(function (choiceResult) {
+  //  addToHomeScreen() {
+  //   this.defferedPrompt.prompt();  // Wait for the user to respond to the prompt
+  //   this.defferedPrompt.userChoice
+  //     .then(function (choiceResult) {
 
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User accepted the A2HS prompt');
-        } else {
-          console.log('User dismissed the A2HS prompt');
-        }
+  //       if (choiceResult.outcome === 'accepted') {
+  //         console.log('User accepted the A2HS prompt');
+  //       } else {
+  //         console.log('User dismissed the A2HS prompt');
+  //       }
 
-        this.defferedPrompt = null;
+  //       this.defferedPrompt = null;
 
-      });
-  }
+  //     });
+  // }
 }
